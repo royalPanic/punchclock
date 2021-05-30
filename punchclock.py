@@ -63,12 +63,16 @@ async def clockout(ctx):
 
 @bot.command(aliases=["staff"])
 async def seestaff(ctx):
-    onlinelist = []
-    for x in clocklist:
-        onlinelist.append(x.name)
-    embed=discord.Embed(title="Please gauge staff availability by this list and not user statuses.", description=str(onlinelist).strip("[]")+"\n")
-    embed.set_author(name="Punchclock", url="https://github.com/royalPanic/punchclock")
-    embed.set_footer(text="Powered by Punchclock")
-    await ctx.send(embed=embed)
+    if not clocklist:
+        e = discord.Embed(colour=discord.Colour(0xFEE75C), description="Unfortunately, there are no staff available at this time.")
+        await ctx.send(embed=e)
+    else:
+        onlinelist = []
+        for x in clocklist:
+            onlinelist.append(x.name)
+        embed=discord.Embed(title="Please gauge staff availability by this list and not user statuses.", description=str(onlinelist).strip("[]")+"\n")
+        embed.set_author(name="Punchclock", url="https://github.com/royalPanic/punchclock")
+        embed.set_footer(text="Powered by Punchclock")
+        await ctx.send(embed=embed)
 
 bot.run(token)
