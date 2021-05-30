@@ -1,0 +1,6 @@
+# Bot Specific Files
+config.json
+
+# Python Stuff
+/cogs/__pycache__
+/__pycache__
