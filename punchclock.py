@@ -58,6 +58,7 @@ async def clockout(ctx):
         e = discord.Embed(colour=discord.Colour(0xFEE75C), description="You're not clocked in!")
         await ctx.send(embed=e)
     else:
+        clocklist.remove(ctx.author)
         e = discord.Embed(colour=discord.Colour(0x57F287), description="You're clocked out!")
         await ctx.send(embed=e)
 
