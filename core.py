@@ -1,5 +1,6 @@
 # Import Stack
 import discord
+from discord_slash import SlashCommand
 from discord.ext import commands
 import jthon
 from pathlib import Path
@@ -7,6 +8,7 @@ import os
 from discord.ext.commands import has_permissions
 from discord.utils import get
 import discord.abc
+
 class MyHelpCommand(commands.MinimalHelpCommand):
     async def send_pages(self):
         destination = self.get_destination()
@@ -26,6 +28,7 @@ bot = commands.Bot(
 )
 bot.help_command = MyHelpCommand()
 clocklist = []
+slash = SlashCommand(bot, sync_commands=True)
 
 # Function Defs
 def automatic_cog_load():
